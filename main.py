@@ -13,7 +13,7 @@ def daterange(start_date, end_date):
         yield start_date + timedelta(n)
 
 start_date = date(2022, 9, 1)
-end_date = date(2023, 5, 26)
+end_date = date(2022, 9, 2)
 for single_date in daterange(start_date, end_date):
     current_date = single_date.strftime("%Y-%m-%d")
 
@@ -41,5 +41,5 @@ for single_date in daterange(start_date, end_date):
                 to_write[7] = cells[4].text.strip() #Location
                 to_write[8] = False #Private
                 writer.writerow(to_write)
-    time.sleep()
+    time.sleep(0.5)
 f.close()
