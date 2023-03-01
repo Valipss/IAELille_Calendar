@@ -12,8 +12,8 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-start_date = date(2022, 9, 1)
-end_date = date(2022, 9, 2)
+start_date = date(2022, 12, 1)
+end_date = date(2023, 5, 31)
 for single_date in daterange(start_date, end_date):
     current_date = single_date.strftime("%Y-%m-%d")
 
@@ -30,6 +30,8 @@ for single_date in daterange(start_date, end_date):
             for row in rows:
                 to_write = [None] * 9 
                 cells = row.find_all('td')
+                if "M1GRH-FA1" not in cells[3].text.strip():
+                    continue
                 to_write[0] = cells[5].text.strip() #Subject
                 to_write[1] = current_date
                 to_write[2] = cells[0].text.strip() #Start Time
